@@ -1,6 +1,8 @@
 import React from "react";
 import HornedBeast from "./HornedBeast";
 
+import data from './Data.json';
+
 let nameData = [
   "dragon",
   "lizard",
@@ -18,8 +20,11 @@ let nameData = [
 class Main extends React.Component {
   render() {
     let hornedbeastComponents = [];
-    nameData.forEach((name) => {
-      hornedbeastComponents.push(<HornedBeast name={name} />);
+    data.forEach((HornedBeast) => {
+      hornedbeastComponents.push
+      (<HornedBeast name ={HornedBeast.name} imageurl=
+        {HornedBeast.imageurl}/>
+      );
     });
 
     return (
