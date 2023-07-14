@@ -1,37 +1,22 @@
 import React from "react";
 import HornedBeast from "./HornedBeast";
 
-import data from './Data.json';
+import data from "./data.json";
 
-let nameData = [
-  "dragon",
-  "lizard",
-  "chameleon",
-  "rhino",
-  "unicorn",
-  "unilego",
-  "narwhal",
-  "triceratops",
-  "markhor",
-  "mouflon",
-  "addax",
-];
+import { Container, Row, Col } from "react-bootstrap";
 
 class Main extends React.Component {
   render() {
-    let hornedbeastComponents = [];
-    data.forEach((HornedBeast) => {
-      hornedbeastComponents.push
-      (<HornedBeast name ={HornedBeast.name} imageurl=
-        {HornedBeast.imageurl}/>
-      );
-    });
-
     return (
-      <div>
-        <h2>HornedBeast:</h2>
-        {hornedbeastComponents}
-      </div>
+      <Container>
+        <Row>
+          {data.map((beast) => (
+            <Col sm={6} md={4} lg={3} key={beast.id}>
+              <HornedBeast beast={beast} />
+            </Col>
+          ))}
+        </Row>
+      </Container>
     );
   }
 }
