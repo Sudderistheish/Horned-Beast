@@ -1,23 +1,30 @@
 import React from "react";
 import HornedBeast from "./HornedBeast";
+import {Modal, Button} from "react-boostrap";
 
 import data from "./data.json";
 
 import { Container, Row, Col } from "react-bootstrap";
 
-class Main extends React.Component {
-  render() {
-    return (
-      <Container>
-        <Row>
+class MainP extends React.Component {
+  Mainp({data,onImageClick}) {
+      return (
+          <div>
           {data.map((beast) => (
-            <Col sm={6} md={4} lg={3} key={beast.id}>
-              <HornedBeast beast={beast} />
-            </Col>
-          ))}
-        </Row>
-      </Container>
+            <img
+            key={beast.id}
+            src={beast.image}
+            alt={beast.title}
+
+            onClick={() => onImageClick(beast)}
+          />
+        ))}
+
+      </div>
+
     );
-  }
+  
+  
 }
-export default Main;
+
+export default Mainp;

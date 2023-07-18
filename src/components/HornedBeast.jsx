@@ -1,5 +1,5 @@
 import React from "react";
-
+import {Modal, Button} from 'react-bootstrap';
 class HornedBeast extends React.Component {
   render() {
     return (
@@ -14,6 +14,23 @@ class HornedBeast extends React.Component {
       </div>
     );
   }
+
+}
+  
+SelectedBeast({beast, onclose}) {
+  return(
+    <Modal show={true} onHide ={onClose}>
+    <Modal.Header closeButton>
+        <Modal.Title>{beast.title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <img src={beast.image} alt={beast.title} />
+        <p>{beast.description}</p>
+      </Modal.Body>
+    </Modal>
+  );
+
+  
 }
 
 export default HornedBeast;

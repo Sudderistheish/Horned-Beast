@@ -1,20 +1,29 @@
 import React from "react";
 
-import Header from "./Header";
-import Footer from "./Footer";
+
 import Main from "./MainP";
+import data from './data.json';
+import {Modal,Button} from 'react-bootstrap';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Header />
-        <Footer />
-        <Main />
-      </div>
-    );
-  }
+{
+    let [selectedBeast, setSelectedBeast] = useState(null);
+
+    let handleImageClick = (beast) => {
+    setSelectedBeast(beast);
+  };
+
+  return (
+    
+    <div>
+      <MainP data={data} onImageClick={handleImageClick} />
+      {selectedBeast && (
+        <SelectedBeast beast={selectedBeast} onClose={() => setSelectedBeast(null)} />
+      )}
+
+    </div>
+  );
 }
+
 export default App;
