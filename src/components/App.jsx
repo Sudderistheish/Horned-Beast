@@ -1,35 +1,29 @@
 import React from "react";
 
-import Header from "./Header";
-import Footer from "./Footer";
+
 import Main from "./MainP";
-import HornedBeast from "./HornedBeast";
-import { Container, Row, Col } from "react-bootstrap";
-import beastsData from "./beastsData.json";
+import data from './data.json';
+import {Modal,Button} from 'react-bootstrap';
 
-let MainP = () => {
+import "bootstrap/dist/css/bootstrap.min.css";
+
+{
+    let [selectedBeast, setSelectedBeast] = useState(null);
+
+    let handleImageClick = (beast) => {
+    setSelectedBeast(beast);
+  };
+
   return (
-    <Container>
-      <Row>
-        {beastsData.map((beast) => (
-          <Col sm={6} md={4} lg={3} key={beast.id}>
-            <HornedBeast beast={beast} />
-          </Col>
-        ))}
-      </Row>
-    </Container>
-  );
-};
+    
+    <div>
+      <MainP data={data} onImageClick={handleImageClick} />
+      {selectedBeast && (
+        <SelectedBeast beast={selectedBeast} onClose={() => setSelectedBeast(null)} />
+      )}
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Header />
-        <Footer />
-        <Main />
-      </div>
-    );
-  }
+    </div>
+  );
 }
+
 export default App;
