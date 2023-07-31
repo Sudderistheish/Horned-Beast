@@ -1,29 +1,37 @@
 import React from "react";
 
-
-import Main from "./MainP";
-import data from './data.json';
-import {Modal,Button} from 'react-bootstrap';
+import MainP from "./MainP";
+import data from "./data.json";
+import { Modal, Button } from "react-bootstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-
-{
-    let [selectedBeast, setSelectedBeast] = useState(null);
-
-    let handleImageClick = (beast) => {
-    setSelectedBeast(beast);
+import { render } from "react-dom";
+import HornedBeast from "./HornedBeast";
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedBeast: "",
+    };
+  }
+  handleImageClick = (beast) => {
+    this.setState({ selectedBeast: beast });
   };
-
-  return (
-    
-    <div>
-      <MainP data={data} onImageClick={handleImageClick} />
-      {selectedBeast && (
-        <SelectedBeast beast={selectedBeast} onClose={() => setSelectedBeast(null)} />
-      )}
-
-    </div>
-  );
+  handleModalClose = (beast) => {
+    this.setState({ selectedBeast: "" });
+  };
+  render() {
+    return (
+      <div>
+        <MainP data={data} onImageClick={this.handleImageClick} />
+        {this.state.selectedBeast && (
+          <HornedBeast
+            beast={this.state.selectedBeast}
+            onClose={this.handleModalClose}
+          />
+        )}
+      </div>
+    );
+  }
 }
-
 export default App;
