@@ -1,36 +1,25 @@
 import React from "react";
-import {Modal, Button} from 'react-bootstrap';
+import { Modal, Button } from "react-bootstrap";
 class HornedBeast extends React.Component {
   render() {
     return (
-      <div>
-        <h2>{this.props.beast.title}</h2>
-        <img
-          src={this.props.beast.image_url}
-          alt={this.props.beast.title}
-          title={this.props.beast.title}
-        />
-        <p>{this.props.beast.description}</p>
-      </div>
+      <Modal show={true} onHide={this.props.onClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>{this.props.beast.title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div  className='imgContainer'>
+           
+            <img
+              src={this.props.beast.image_url}
+              alt={this.props.beast.title}
+            />
+          </div>
+          <p>{this.props.beast.description}</p>
+        </Modal.Body>
+      </Modal>
     );
   }
-
-}
-  
-SelectedBeast({beast, onclose}) {
-  return(
-    <Modal show={true} onHide ={onClose}>
-    <Modal.Header closeButton>
-        <Modal.Title>{beast.title}</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <img src={beast.image} alt={beast.title} />
-        <p>{beast.description}</p>
-      </Modal.Body>
-    </Modal>
-  );
-
-  
 }
 
 export default HornedBeast;

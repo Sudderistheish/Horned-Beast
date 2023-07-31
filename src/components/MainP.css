@@ -1,0 +1,13 @@
+.imgContainer{
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.imgContainer > img{
+    width: 300px;
+}
+
+main{
+    display: flex; 
+    flex-direction:column-reverse;
+}
